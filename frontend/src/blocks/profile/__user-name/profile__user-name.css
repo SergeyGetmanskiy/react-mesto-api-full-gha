@@ -1,0 +1,21 @@
+.profile__user-name {
+  grid-area: username;
+  margin: 0;
+  max-width: 294px;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+  color: #FFFFFF;
+  align-self:flex-end;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .profile__user-name {
+    text-align: center;
+    font-size: 27px;
+    line-height: 1.21;
+  }
+}

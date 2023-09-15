@@ -1,0 +1,9 @@
+.spinner__container_onAvatar {
+	display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+	width: 100%;
+  left: -100px;
+}

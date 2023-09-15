@@ -1,0 +1,13 @@
+.profile__image {
+  width: 120px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: url(../../../images/edit-avatar.svg) 10 2, default;
+  background-color: #000000;
+  transition: opacity .2s ease-in-out;
+}
+
+.profile__image:hover {
+  opacity: .2;
+}

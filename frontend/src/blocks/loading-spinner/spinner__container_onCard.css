@@ -1,0 +1,9 @@
+.spinner__container_onCard {
+	display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+	width: 100%;
+  top: -212px;
+}

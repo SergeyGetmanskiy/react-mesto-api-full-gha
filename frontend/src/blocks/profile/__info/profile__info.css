@@ -1,0 +1,22 @@
+.profile__info {
+  margin-left: 30px;
+  display: grid;
+  grid-template-columns: 1fr 26px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "username edit-button"
+    "useroccupation .";
+  gap: 8px 18px;
+}
+
+@media (max-width: 768px) {
+  .profile__info {
+    width: 100%;
+    margin: 0;
+    grid-template-columns: 1fr 189px 1fr;
+    grid-template-areas:
+    ". username edit-button"
+    ". useroccupation .";
+  gap: 8px 10px;
+  }
+}

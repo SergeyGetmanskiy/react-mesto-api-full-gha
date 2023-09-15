@@ -1,0 +1,15 @@
+.button_place_header {
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  height: fit-content;
+}
+
+@media (max-width: 768px) {
+  .button_place_header {
+    font-size: 14px;
+    line-height: 1.21;
+  }
+}

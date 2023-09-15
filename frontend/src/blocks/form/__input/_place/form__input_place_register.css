@@ -1,0 +1,14 @@
+.form__input_place_register {
+  color: #fff;
+  background-color: #000;
+  border-bottom: 2px solid rgba(204, 204, 204, 1);
+  font-weight: 500;
+}
+
+.form__input_place_register:-webkit-autofill,
+.form__input_place_register:-webkit-autofill:hover,
+.form__input_place_register:-webkit-autofill:focus,
+.form__input_place_register:-webkit-autofill:active {
+  -webkit-text-fill-color: #fff;
+  text-decoration: none;
+}

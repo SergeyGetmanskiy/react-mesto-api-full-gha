@@ -1,0 +1,6 @@
+.popup_type_register {
+  visibility: visible;
+  opacity: 1;
+  transition: none;
+  background-color: rgba(0, 0, 0, 0);
+}

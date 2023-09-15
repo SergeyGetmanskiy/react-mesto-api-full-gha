@@ -1,0 +1,10 @@
+.popup__logo {
+  max-width: 120px;
+  max-height: 120px;
+}
+
+@media (max-width: 768px) {
+  .popup__logo {
+  margin-top: 20px;
+  }
+}

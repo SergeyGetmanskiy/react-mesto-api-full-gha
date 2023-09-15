@@ -1,0 +1,13 @@
+.popup__container_type_info-tooltip {
+  width: 430px;
+  height: fit-content;
+  padding: 50px 36px 37px;
+}
+
+@media (max-width: 768px) {
+  .popup__container_type_info-tooltip {
+max-width: 280px;
+max-height: 308px;
+margin-top: -80px;
+  }
+}

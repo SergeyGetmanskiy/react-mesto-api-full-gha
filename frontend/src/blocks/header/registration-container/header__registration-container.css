@@ -1,0 +1,15 @@
+.header__registration-container {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .header__registration-container {
+    width: 100%;
+    order: -1;
+    flex-direction: column;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(84, 84, 84, .7);
+  }
+}

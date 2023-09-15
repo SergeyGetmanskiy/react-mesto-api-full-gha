@@ -1,0 +1,30 @@
+.form__input {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
+  color: #000;
+  background-color: #fff;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.form__input:-webkit-autofill,
+.form__input:-webkit-autofill:hover,
+.form__input:-webkit-autofill:focus,
+.form__input:-webkit-autofill:active {
+    transition: background-color 5000000s ease-in-out 0s;
+}
+
+.form__input:last-of-type {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .form__input {
+    max-width: 260px;
+  }
+}  
