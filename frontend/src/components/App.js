@@ -161,6 +161,7 @@ function App() {
   function handleLogin(email, password) {             // Вход
     auth.login(email, password)
     .then((data) => {
+        console.log(data.token);
         localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
         setEmail(email);
@@ -191,7 +192,8 @@ function App() {
         auth.checkToken(jwt)
         .then((res) => {
             setLoggedIn(true);
-            setEmail(res.data.email);
+            console.log(res);
+            setEmail(res.email);
             setHeaderBtnTitle('Выйти');        
             navigate("/", {replace: true})
           })

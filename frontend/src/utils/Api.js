@@ -1,7 +1,7 @@
 class Api {
   constructor(options) {
     this._url = options.baseUrl;
-    this._authorization = options.headers.authorization;
+    this._headers = options.headers;
   }
 
   _checkServerResponse(res) {
@@ -13,20 +13,17 @@ class Api {
     }
 
   getUserInfo() {
+    console.log(this._headers);
     return fetch(`${this._url}/users/me`, {
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'
-    }})
+      headers: this._headers
+    })
     .then(this._checkServerResponse)
   }
 
   setUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'},
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -36,9 +33,7 @@ class Api {
   setUserAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'},
+      headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
     })})
@@ -47,18 +42,14 @@ class Api {
 
   getCardList() {
     return fetch(`${this._url}/cards`, {
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'
-    }})
+      headers: this._headers
+    })
     .then(this._checkServerResponse)}
 
   postUserCard(data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'},
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -69,9 +60,7 @@ class Api {
   deleteUserCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'}
+      headers: this._headers
       })
     .then(this._checkServerResponse)
   }
@@ -80,9 +69,7 @@ class Api {
     const requestMethod = isLiked ? "PUT": "DELETE"; 
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: requestMethod,
-      headers: {
-        authorization: this._authorization,
-        'Content-Type': 'application/json'}
+      headers: this._headers
       })
     .then(this._checkServerResponse)
   }
@@ -91,6 +78,7 @@ class Api {
 export const api = new Api({
   baseUrl: 'https://sgetmansky.frontend.nomoredomainsicu.ru',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    Authorization: localStorage.getItem('jwt'),
   }
 });
