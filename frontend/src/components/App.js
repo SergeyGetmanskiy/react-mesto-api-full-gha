@@ -82,7 +82,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i === currentUser._id);
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
@@ -161,7 +161,6 @@ function App() {
   function handleLogin(email, password) {             // Вход
     auth.login(email, password)
     .then((data) => {
-        console.log(data.token);
         localStorage.setItem('jwt', data.token);
         setLoggedIn(true);
         setEmail(email);
@@ -192,7 +191,6 @@ function App() {
         auth.checkToken(jwt)
         .then((res) => {
             setLoggedIn(true);
-            console.log(res);
             setEmail(res.email);
             setHeaderBtnTitle('Выйти');        
             navigate("/", {replace: true})

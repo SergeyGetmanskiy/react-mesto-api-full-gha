@@ -4,9 +4,10 @@ import LoadingSpinner from "./LoadingSpinner";
 
 export default function Card({ card, onCardClick, onCardDelete, onCardLike }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const isOwn = card.owner._id === currentUser._id;
 
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  const isOwn = card.owner === currentUser._id;
+  const isLiked = card.likes.some(i => i === currentUser._id);
+  
   const cardLikeButtonClassName = ( 
     `button button_type_like-button ${isLiked && 'button_active'}` 
   );

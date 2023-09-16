@@ -1,7 +1,7 @@
 const allowedCors = [
   'https://sgetmansky.frontend.nomoredomainsicu.ru',
   'http://sgetmansky.frontend.nomoredomainsicu.ru',
-  'localhost:3000',
+  'http://localhost:3001',
 ];
 
 module.exports = (req, res, next) => {

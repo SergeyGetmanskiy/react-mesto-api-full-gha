@@ -1,7 +1,10 @@
 class Api {
   constructor(options) {
     this._url = options.baseUrl;
-    this._headers = options.headers;
+    this._headers = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this._getToken()}`,
+    }
   }
 
   _checkServerResponse(res) {
@@ -12,10 +15,18 @@ class Api {
       }
     }
 
+  _getToken() {
+    const token = localStorage.getItem('jwt');
+    if(token) {
+      return token
+    } else {
+      return null
+    }
+  }
+
   getUserInfo() {
-    console.log(this._headers);
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers
+      headers: this._headers,
     })
     .then(this._checkServerResponse)
   }
@@ -42,7 +53,8 @@ class Api {
 
   getCardList() {
     return fetch(`${this._url}/cards`, {
-      headers: this._headers
+      method: 'GET',
+      headers: this._headers,
     })
     .then(this._checkServerResponse)}
 
@@ -60,7 +72,7 @@ class Api {
   deleteUserCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers
+      headers: this._headers,
       })
     .then(this._checkServerResponse)
   }
@@ -69,16 +81,12 @@ class Api {
     const requestMethod = isLiked ? "PUT": "DELETE"; 
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: requestMethod,
-      headers: this._headers
+      headers: this._headers,
       })
     .then(this._checkServerResponse)
   }
-}
+};
 
 export const api = new Api({
-  baseUrl: 'https://sgetmansky.frontend.nomoredomainsicu.ru',
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: localStorage.getItem('jwt'),
-  }
+  baseUrl: 'http://localhost:3000'
 });

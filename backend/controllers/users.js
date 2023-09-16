@@ -83,7 +83,7 @@ module.exports.updateUserProfile = (req, res, next) => {
       runValidators: true,
     },
   )
-    .then((user) => res.status(200).send({ user }))
+    .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
@@ -102,7 +102,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
       runValidators: true,
     },
   )
-    .then((user) => res.status(200).send({ user }))
+    .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Переданы некорректные данные при обновлении аватара.'));
