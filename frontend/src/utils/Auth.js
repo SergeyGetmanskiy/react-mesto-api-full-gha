@@ -1,6 +1,6 @@
 import checkServerResponse from "./CheckServerResponse";
 
-export const BASE_URL = 'https://api.sgetmansky.backend.nomoredomainsicu.ru';
+const BASE_URL = 'http://localhost:3000';
 
 function request(url, options) {
   return fetch(url, options).then(checkServerResponse)
