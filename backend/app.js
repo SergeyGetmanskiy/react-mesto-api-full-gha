@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
-const { PORT, DATABASE_URL } = process.env;
+const { PORT = 3000, DATABASE_URL = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const app = express();
 
@@ -24,7 +24,15 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose.connect(DATABASE_URL, {
   useNewUrlParser: true,
-});
+})
+  .then(
+    () => {
+      console.log('Connected to MongoDB');
+    },
+    (err) => {
+      console.log(err);
+    },
+  );
 
 app.use(cors);
 
