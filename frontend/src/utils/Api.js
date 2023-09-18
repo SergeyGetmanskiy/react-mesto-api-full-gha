@@ -1,10 +1,6 @@
 class Api {
   constructor(options) {
     this._url = options.baseUrl;
-    this._headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this._getToken()}`,
-    }
   }
 
   _checkServerResponse(res) {
@@ -26,7 +22,10 @@ class Api {
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
     })
     .then(this._checkServerResponse)
   }
@@ -34,7 +33,10 @@ class Api {
   setUserInfo(data) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
       body: JSON.stringify({
         name: data.name,
         about: data.about
@@ -44,7 +46,10 @@ class Api {
   setUserAvatar(data) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
       body: JSON.stringify({
         avatar: data.avatar,
     })})
@@ -54,14 +59,20 @@ class Api {
   getCardList() {
     return fetch(`${this._url}/cards`, {
       method: 'GET',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
     })
     .then(this._checkServerResponse)}
 
   postUserCard(data) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
       body: JSON.stringify({
         name: data.name,
         link: data.link,
@@ -72,7 +83,10 @@ class Api {
   deleteUserCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
       })
     .then(this._checkServerResponse)
   }
@@ -81,7 +95,10 @@ class Api {
     const requestMethod = isLiked ? "PUT": "DELETE"; 
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: requestMethod,
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this._getToken()}`,
+      },
       })
     .then(this._checkServerResponse)
   }

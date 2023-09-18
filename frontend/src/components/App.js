@@ -166,6 +166,10 @@ function App() {
         setEmail(email);
         setHeaderBtnTitle('Выйти');
         navigate('/', {replace: true});
+        api.getUserInfo()
+        .then((userInfo) => {
+          setCurrentUser(userInfo);
+        })
       })
     .catch((err) => {
       console.log(err);
