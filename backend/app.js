@@ -30,7 +30,7 @@ mongoose.connect(DATABASE_URL, {
       console.log('Connected to MongoDB');
     },
     (err) => {
-      console.log(err);
+      console.log(`Ошибка ${err}`);
     },
   );
 
