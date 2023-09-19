@@ -11,7 +11,7 @@ const NotFoundError = require('../errors/NotFoundError');
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.status(200).send({ users }))
+    .then((users) => res.status(200).send(users))
     .catch(next);
 };
 
@@ -26,7 +26,7 @@ module.exports.getUser = (req, res, next) => {
 module.exports.getUserById = (req, res, next) => {
   User.findById(req.params.userId)
     .orFail(new NotFoundError('Пользователь по указанному _id не найден.'))
-    .then((user) => res.status(200).send({ user }))
+    .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
         next(new BadRequestError('Переданы некорректные данные для поиска пользователя.'));
