@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP 62.84.117.187
+IP 158.160.65.111
 
 Frontend https://sgetmansky.frontend.nomoredomainsicu.ru
 
