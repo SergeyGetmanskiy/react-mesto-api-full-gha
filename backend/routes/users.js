@@ -16,10 +16,10 @@ const {
 router.get('/', getUsers);
 router.get('/me', getUser);
 
-router.get('/:userId', celebrate(userIdSchema), getUserById);
+router.get('/:userId', userIdSchema, getUserById);
 
-router.patch('/me', celebrate(userProfileSchema), updateUserProfile);
+router.patch('/me', userProfileSchema, updateUserProfile);
 
-router.patch('/me/avatar', celebrate(userAvatarSchema), updateUserAvatar);
+router.patch('/me/avatar', userAvatarSchema, updateUserAvatar);
 
 module.exports = router;

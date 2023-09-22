@@ -50,16 +50,16 @@ app.get('/crash-test', () => {
   }, 0);
 });
 
-app.post('/signup', celebrate(signupSchema), createUser);
-app.post('/signin', celebrate(signinSchema), login);
+app.post('/signup', signupSchema, createUser);
+app.post('/signin', signinSchema, login);
 
 app.use(auth);
 
 app.use('/users', require('./routes/users'));
 app.use('/cards', require('./routes/cards'));
 
-app.use('*', (err, req, res, next) => {
-  next(new NotFoundError('Страница не существует.'));
+app.use('*', (req, res) => {
+  res.status(404).send({ message: 'Not found page' });
 });
 
 app.use(errorLogger);

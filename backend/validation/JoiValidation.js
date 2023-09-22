@@ -1,6 +1,6 @@
-const { Joi } = require('celebrate');
+const { celebrate, Joi } = require('celebrate');
 
-const signupSchema = {
+module.exports.signupSchema = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
@@ -8,22 +8,22 @@ const signupSchema = {
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }),
-};
+});
 
-const signinSchema = {
+module.exports.signinSchema = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().min(8),
   }),
-};
+});
 
-const userIdSchema = {
+module.exports.userIdSchema = celebrate({
   params: Joi.object().keys({
     userId: Joi.string().alphanum().length(24),
   }),
-};
+});
 
-const userProfileSchema = {
+module.exports.userProfileSchema = celebrate({
   params: Joi.object().keys({
     userId: Joi.string().alphanum().length(24),
   }),
@@ -31,21 +31,13 @@ const userProfileSchema = {
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
   }),
-};
+});
 
-const userAvatarSchema = {
+module.exports.userAvatarSchema = celebrate({
   params: Joi.object().keys({
     userId: Joi.string().alphanum().length(24),
   }),
   body: Joi.object().keys({
     avatar: Joi.string().pattern(/https?:\/\/w?w?w?.+/i),
   }),
-};
-
-module.exports = {
-  signupSchema,
-  signinSchema,
-  userIdSchema,
-  userProfileSchema,
-  userAvatarSchema,
-};
+});
