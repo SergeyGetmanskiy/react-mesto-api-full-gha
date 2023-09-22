@@ -12,7 +12,7 @@ const app = express();
 
 const helmet = require('helmet');
 
-const { celebrate, Joi, errors } = require('celebrate');
+const { errors } = require('celebrate');
 const { signinSchema, signupSchema } = require('./validation/JoiValidation');
 
 const { login, createUser } = require('./controllers/users');
