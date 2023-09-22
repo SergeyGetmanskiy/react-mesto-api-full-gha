@@ -56,8 +56,8 @@ app.post('/signin', signinSchema, login);
 app.use('/users', auth, require('./routes/users'));
 app.use('/cards', auth, require('./routes/cards'));
 
-app.use('*', (req, res) => {
-  res.status(404).send({ message: 'Not found page' });
+app.use('*', (req, res, next) => {
+  next(new NotFoundError('Страница не существует.'));
 });
 
 app.use(errorLogger);

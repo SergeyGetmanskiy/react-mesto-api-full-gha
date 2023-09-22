@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const { celebrate } = require('celebrate');
 const {
   getUsers,
   getUser,
@@ -14,6 +13,7 @@ const {
 } = require('../validation/JoiValidation');
 
 router.get('/', getUsers);
+
 router.get('/me', getUser);
 
 router.get('/:userId', userIdSchema, getUserById);
