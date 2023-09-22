@@ -166,10 +166,17 @@ function App() {
         setEmail(email);
         setHeaderBtnTitle('Выйти');
         navigate('/', {replace: true});
-        api.getUserInfo()
-        .then((userInfo) => {
+        Promise.all([ api.getUserInfo(), api.getCardList() ])
+        .then(([ userInfo, initialCards ]) => {
           setCurrentUser(userInfo);
+          setCards(initialCards);
         })
+        .catch((err) => {
+          console.log(err);
+        })
+    .catch((err) => {
+      console.log(err);
+    })
       })
     .catch((err) => {
       console.log(err);
